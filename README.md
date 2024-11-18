@@ -1,2 +1,2 @@
-# crispy-fishstick
+# QWhiz
 부산소프트웨어마이스터고등학교 웹 표준화 &amp; 빅데이터 분석 과제
