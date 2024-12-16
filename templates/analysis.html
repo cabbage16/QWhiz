@@ -6,6 +6,14 @@
     <title>큐위즈 - 분석</title>
     <!-- Chart.js 라이브러리 포함 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    canvas {
+        display: block;
+        max-width: 700px; /* 캔버스의 최대 너비를 400px로 제한 */
+        max-height: 300px; /* 캔버스의 최대 높이를 300px로 제한 */
+        margin: 0 auto; /* 화면 중앙 정렬 */
+    }
+</style>
 </head>
 <body>
     <!-- 분석 데이터 표시 -->
@@ -15,8 +23,7 @@
     </div>
 
     <!-- 그래프를 표시할 캔버스 -->
-    <canvas id="recordChart"></canvas>
-
+    <canvas id="recordChart" width="400" height="300"></canvas>
     <script>
         // 데이터를 요청할 /record API 주소
         const fetchData = async () => {
@@ -54,6 +61,10 @@
                         }]
                     },
                     options: {
+                        animation: {
+                            duration: 1000, // 애니메이션 지속 시간 (밀리초)
+                            easing: 'easeOut', // 애니메이션 효과 종류
+                        },
                         scales: {
                             y: {
                                 beginAtZero: true

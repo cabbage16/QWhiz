@@ -30,7 +30,7 @@ function submitQuestion() {
     // AI의 답변을 대화창에 추가
     const answerDiv = document.createElement('div');
     answerDiv.classList.add('answer');
-    answerDiv.textContent = `이 질문에 대한 답변을 준비중입니다.`;
+    answerDiv.textContent = `···`;
     conversationContainer.prepend(answerDiv);  // prepend를 사용하여 상단에 추가
 
     // 입력창 비우기
