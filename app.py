@@ -5,11 +5,13 @@ import pandas as pd
 
 from authlib.integrations.flask_client import OAuth
 from flask.cli import load_dotenv
-from flask import Flask, url_for, session, redirect, jsonify, request
+from flask import Flask, url_for, session, redirect, jsonify, request, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 load_dotenv()
 app = Flask(__name__)
+CORS(app)
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -82,7 +84,11 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return "Hello, World!"
+    return render_template('index.html')
+
+@app.route('/analysis')
+def analysis():
+    return render_template('analysis.html')
 
 @app.route('/login/google')
 def login_google():
@@ -143,7 +149,7 @@ def game():
     return jsonify({'message': response})
 
 @app.route('/record', methods=['GET'])
-def records():
+def record():
     if 'user' not in session:
         return jsonify({'error': 'User not logged in'}), 401
 

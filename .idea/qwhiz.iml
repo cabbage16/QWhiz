@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (qwhiz_server)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="chart.js" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />

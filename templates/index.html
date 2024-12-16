@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대화형 스무고개 게임</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <header>
+        {% if session['user'] %}
+            <!-- 로그인된 경우 구글 로그인 버튼 숨김 -->
+            <button class="google-login-btn" style="display:none;">구글 로그인</button>
+            <a href="/analysis" class="go-to-analysis-btn">분석 페이지로 이동</a>
+        {% else %}
+            <!-- 로그인되지 않은 경우 구글 로그인 버튼 표시 -->
+            <form action="{{ url_for('login_google') }}" method="get">
+                <button type="submit" class="google-login-btn">구글 로그인</button>
+            </form>
+        {% endif %}
+    </header>
+
+    <div class="main">
+        <div class="game-container">
+            <div class="input-container">
+                <input type="text" id="question-input" placeholder="질문을 입력하세요..." />
+                <button id="ask-button">질문하기</button>
+            </div>
+
+            <div class="conversation-container" id="conversation-container">
+                <!-- 질문과 답변이 여기에 표시됩니다 -->
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

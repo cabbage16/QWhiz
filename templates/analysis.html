@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>큐위즈 - 분석</title>
+    <!-- Chart.js 라이브러리 포함 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- 분석 데이터 표시 -->
+    <div>
+        <p id="success-rate-text"></p>
+        <p id="stats-text"></p>
+    </div>
+
+    <!-- 그래프를 표시할 캔버스 -->
+    <canvas id="recordChart"></canvas>
+
+    <script>
+        // 데이터를 요청할 /record API 주소
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/record');
+                const data = await response.json();
+
+                // 분석 데이터를 화면에 표시
+                const successRate = data.success_rate.trim();
+                const avgAttempts = data.my_avg_attempts;
+                const percentile = data.my_percentile.trim();
+
+                document.getElementById('success-rate-text').textContent = `정답률: ${successRate}`;
+                document.getElementById('stats-text').textContent = `평균 질문 횟수는 ${avgAttempts}회이고 상위 ${percentile}입니다.`;
+
+                // Chart.js로 그래프 그리기
+                const recordList = data.record_list;
+                const dates = recordList.map(record => new Date(record.date).toLocaleDateString());
+                const attempts = recordList.map(record => record.attempts);
+                const results = recordList.map(record => record.result);
+
+                const ctx = document.getElementById('recordChart').getContext('2d');
+
+                // Chart.js 막대 그래프 구성
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: dates,  // X축 레이블: 날짜
+                        datasets: [{
+                            label: 'Attempts',
+                            data: attempts,  // Y축 데이터: 시도 횟수
+                            backgroundColor: results.map(result => result === 'success' ? 'green' : 'red'),
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
+
+        // 페이지 로드 시 데이터 불러오기
+        window.onload = fetchData;
+    </script>
+</body>
+</html>

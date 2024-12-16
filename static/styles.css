@@ -1,0 +1,109 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px; /* 구글 로그인 버튼과 게임 간의 간격 */
+}
+
+.google-login-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* 버튼에 간격 추가 */
+}
+
+.google-login-btn:hover {
+    background-color: #357AE8;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.game-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+#question-input {
+    flex-grow: 1;
+    padding: 12px; /* input 박스를 더 크게 만들기 위해 padding 추가 */
+    font-size: 16px; /* 폰트 크기 증가 */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#ask-button {
+    padding: 12px 20px; /* 버튼 크기 증가 */
+    font-size: 16px; /* 버튼 텍스트 크기 증가 */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* 버튼과 input 박스 간의 간격 추가 */
+    white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+}
+
+#ask-button:hover {
+    background-color: #45a049;
+}
+
+.conversation-container {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.question, .answer {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.question {
+    justify-content: flex-start;
+    background-color: #e0f7fa;
+}
+
+.answer {
+    justify-content: flex-end;
+    background-color: #e8f5e9;
+}
