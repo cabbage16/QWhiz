@@ -33,11 +33,11 @@
 
                 // 분석 데이터를 화면에 표시
                 const successRate = data.success_rate.trim();
-                const avgAttempts = data.my_avg_attempts;
-                const percentile = data.my_percentile.trim();
+                const avgAttempts = data.my_avg_attempts.trim();
+                const rank = data.my_rank.trim();
 
                 document.getElementById('success-rate-text').textContent = `정답률: ${successRate}`;
-                document.getElementById('stats-text').textContent = `평균 질문 횟수는 ${avgAttempts}회이고 상위 ${percentile}입니다.`;
+                document.getElementById('stats-text').textContent = `평균 질문 횟수는 ${avgAttempts}회이고 ${rank}위 입니다.`;
 
                 // Chart.js로 그래프 그리기
                 const recordList = data.record_list;
