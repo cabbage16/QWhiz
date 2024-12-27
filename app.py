@@ -116,6 +116,11 @@ def authorize():
 
     return redirect(url_for('index'))
 
+@app.route('/logout')
+def logout():
+    session.pop('user', None)  # 세션 초기화
+    return redirect(url_for('index', _external=True))
+
 @app.route('/game', methods=['POST'])
 def game():
     data =request.get_json()
